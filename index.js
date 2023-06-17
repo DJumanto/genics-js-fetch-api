@@ -1,13 +1,19 @@
-function minimum(a,b){
-    console.log(a<b?a:b)
+async function fetchData(url) {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+  }
+  
+const url = 'https://api.example.com/data';
+try {
+    const data = await fetchData(url);
+    console.log(data);
+    }catch (error) {
+    console.error('Error:', error);
 }
-
-minimum(4,3)
-
-arr = [1,2,3,4]
-let i = 7
-for (let a = 0; a < arr.length; a++, i++) {
-    arr[a] = i
-    
-}
-console.log(arr)
+  
